@@ -32,21 +32,6 @@ module.exports = {
 				include: /src/
 			},
 
-			// Antd style handler
-			{
-				test: /\.css$/,
-				exclude: /src/,
-				use: [
-					{ loader: 'style-loader' },
-					{
-						loader: 'css-loader',
-						options: {
-							importLoaders: 1
-						}
-					}
-				]
-			},
-
 			// Img handler
 			{
 				test: /\.(png|jpg|gif|jpeg|svg)$/,

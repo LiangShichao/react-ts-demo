@@ -1,100 +1,50 @@
 import React, { Component } from 'react';
-import { Layout, Breadcrumb, Menu, Icon, Avatar } from 'antd';
-import './App.css';
+import Highcharts from 'highcharts';
+import HighchartsReact from 'highcharts-react-official';
+import HighchartsMore from 'highcharts/highcharts-more';
+import './index.css';
 
-const { Sider, Content, Header, Footer } = Layout;
-const { SubMenu } = Menu;
+HighchartsMore(Highcharts)
 
-export interface AppProps {
-	title?: string;
-	sider: string;
-	header: string;
-	content: string;
-	footer: string;
+interface IProps {
+	options: {
+		chart?: {
+			type?: string
+		},
+		series: Array<any>
+	};
 }
 
-export class App extends Component<AppProps> {
+interface IState {
+	JSON: object;
+	type?: string;
+}
+
+export class App extends Component<IProps, IState> {
+	constructor(props: IProps) {
+		super(props);
+		this.state = {
+			JSON: this.props.options,
+			type: this.props.options.chart && this.props.options.chart.type || ''
+		};
+	}
+
 	render() {
 		return (
-			<Layout>
-				<Header className="header">
-					<Avatar className="logo" src={require('../../../images/001.png')} />
-					<Menu
-						theme="dark"
-						mode="horizontal"
-						defaultSelectedKeys={['2']}
-						style={{ lineHeight: '64px' }}>
-						<Menu.Item key="1">nav 1</Menu.Item>
-						<Menu.Item key="2">nav 2</Menu.Item>
-						<Menu.Item key="3">nav 3</Menu.Item>
-					</Menu>
-				</Header>
-				<Layout>
-					<Sider width={200} style={{ background: '#fff' }}>
-						<Menu
-							mode="inline"
-							defaultSelectedKeys={['1']}
-							defaultOpenKeys={['sub1']}
-							style={{ height: '100%', borderRight: 0 }}>
-							<SubMenu
-								key="sub1"
-								title={
-									<span>
-										<Icon type="user" />
-										subnav 1
-									</span>
-								}>
-								<Menu.Item key="1">option1</Menu.Item>
-								<Menu.Item key="2">option2</Menu.Item>
-								<Menu.Item key="3">option3</Menu.Item>
-								<Menu.Item key="4">option4</Menu.Item>
-							</SubMenu>
-							<SubMenu
-								key="sub2"
-								title={
-									<span>
-										<Icon type="laptop" />
-										subnav 2
-									</span>
-								}>
-								<Menu.Item key="5">option5</Menu.Item>
-								<Menu.Item key="6">option6</Menu.Item>
-								<Menu.Item key="7">option7</Menu.Item>
-								<Menu.Item key="8">option8</Menu.Item>
-							</SubMenu>
-							<SubMenu
-								key="sub3"
-								title={
-									<span>
-										<Icon type="notification" />
-										subnav 3
-									</span>
-								}>
-								<Menu.Item key="9">option9</Menu.Item>
-								<Menu.Item key="10">option10</Menu.Item>
-								<Menu.Item key="11">option11</Menu.Item>
-								<Menu.Item key="12">option12</Menu.Item>
-							</SubMenu>
-						</Menu>
-					</Sider>
-					<Layout style={{ padding: '0 24px 24px' }}>
-						<Breadcrumb style={{ margin: '16px 0' }}>
-							<Breadcrumb.Item>Home</Breadcrumb.Item>
-							<Breadcrumb.Item>List</Breadcrumb.Item>
-							<Breadcrumb.Item>App</Breadcrumb.Item>
-						</Breadcrumb>
-						<Content
-							style={{
-								background: '#fff',
-								padding: 24,
-								margin: 0,
-								minHeight: 280
-							}}>
-							Content
-						</Content>
-					</Layout>
-				</Layout>
-			</Layout>
+			<div className="app">
+				<div className="app-highcharts">
+					<HighchartsReact
+						highcharts={Highcharts}
+						options={this.props.options}
+					/>
+				</div>
+				<div className="app-title">
+					Received {this.state.type} JSON:
+				</div>
+				<textarea className="app-data">
+					{JSON.stringify(this.state, null, 2)}
+				</textarea>
+			</div>
 		);
 	}
 }

@@ -2,12 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 
-import 'antd/dist/antd.css';
 import { App } from './components/App';
+import {
+	combinationsOptions,
+	gaugesOptions,
+	basicBubbleOptions,
+	basicScatterOptions,
+	basicPieOptions,
+	basicBarOptions,
+	basicAreaOptions,
+	basicLineOptions
+} from './testdata/highcharts';
 
 ReactDOM.render(
 	<AppContainer>
-		<App title="Home/Setings" sider="sider" header="header" content="content" footer="footer" />
+		<App options={combinationsOptions} />
 	</AppContainer>,
 	document.getElementById('root')
 );
