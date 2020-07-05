@@ -3,7 +3,7 @@
 ## Prepare required
     - Node.js & NPM
     - React
-    - React-admin
+    - Highcharts-react-offical
     - Webpack
     - JavaScript & HTML
     - TypeScript
