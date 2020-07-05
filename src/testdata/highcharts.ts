@@ -739,4 +739,6 @@ const basicLineOptions = {
 	}
 }
 
-export { combinationsOptions, gaugesOptions, basicBubbleOptions, basicScatterOptions, basicPieOptions, basicBarOptions, basicAreaOptions, basicLineOptions }
+const MockData = [ combinationsOptions, gaugesOptions, basicBubbleOptions, basicScatterOptions, basicPieOptions, basicBarOptions, basicAreaOptions, basicLineOptions ]
+
+export  default MockData;
