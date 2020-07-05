@@ -20,7 +20,7 @@ interface IState {
 	type?: string;
 }
 
-export class App extends Component<IProps, IState> {
+export default class ReactHighcharts extends Component<IProps, IState> {
 	constructor(props: IProps) {
 		super(props);
 		this.state = {

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 
-import { App } from './components/App';
+import ReactHighcharts from './components/ReactHighcharts';
 import {
 	combinationsOptions,
 	gaugesOptions,
@@ -16,7 +16,7 @@ import {
 
 ReactDOM.render(
 	<AppContainer>
-		<App options={combinationsOptions} />
+		<ReactHighcharts options={combinationsOptions} />
 	</AppContainer>,
 	document.getElementById('root')
 );
